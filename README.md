@@ -1,2 +1,0 @@
-# KodeKloud
-KodeKloud Test Task

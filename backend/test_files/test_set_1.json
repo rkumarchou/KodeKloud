@@ -1,0 +1,43 @@
+[
+    {
+        "title": "Dictionary",
+        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
+        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "files": {
+            "name": "first.yaml",
+            "stage": {"Property1":"value1"},
+            "answers": {"Property1":"value1", "Property2":"value2"}
+        }
+    },
+    {
+        "title": "Dictionary",
+        "question": "Add Property <code>Fruit1</code> and value <value>Apple</value>",
+        "subText": "Add Another <code>Fruit2</code> and value <value>Mango</value>",
+        "files": {
+            "name": "first.yaml",
+            "stage": {"Fruit1":"Apple"},
+            "answers": {"Fruit1":"Apple", "Fruit2":"Mango"}
+        }
+    },
+    {
+        "title": "Dictionary in Dictionary",
+        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
+        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "files": {
+            "name": "first.yaml",
+            "stage": {"Property1":"value1"},
+            "answers": {"Property1":"value1", "Property2":"value2"}
+        }
+    },
+    {
+        "title": "Dictionary in Dictionary",
+        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
+        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "files": {
+            "name": "first.yaml",
+            "stage": {"Property1":"value1"},
+            "answers": {"Property1":"value1", "Property2":"value2"}
+        }
+    }
+
+]
