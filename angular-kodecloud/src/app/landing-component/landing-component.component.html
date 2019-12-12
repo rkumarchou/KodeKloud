@@ -1,0 +1,21 @@
+<div class="card" style="width: 18rem;" [ngClass]="{'green': isRightAnswer}">
+  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+  <div class="card-body">
+    <h5 class="card-title" *ngIf="currentQuestion">{{currentQuestion.title}}</h5>
+    <p class="card-text"></p>
+    <i class="pi-chevron-left"></i>
+    <i class="pi pi-times" *ngIf="currentQuestion" [innerHTML]="currentQuestion.question"></i>
+    <i class="pi pi-times" *ngIf="currentQuestion" [innerHTML]="currentQuestion.subText"></i>
+    <button (click)="previous()" class="btn btn-primary" *ngIf="!isRightAnswer"
+      [disabled]="isFirstQuestion">Prev</button>
+    <button (click)="next()" class="btn btn-primary" [disabled]="isLastQuestion">Next</button>
+  </div>
+</div>
+<div>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <div>
+      <textarea id="yaml" (keyup)="onSubmit(checkoutForm.value)" type=" textarea" formControlName="yaml"
+        *ngIf="currentQuestion" value="{{stage}}"></textarea>
+    </div>
+  </form>
+</div>
