@@ -17,6 +17,8 @@ export class LandingComponentComponent implements OnInit {
   isRightAnswer = false;
   isFirstQuestion = true;
   length = 0;
+  showSolution = false;
+  solution;
   currentQuestion = null;
   index = 0;
   stage = null;
@@ -24,8 +26,18 @@ export class LandingComponentComponent implements OnInit {
   totalQuestions = 0;
   answer = null;
   finished = false;
-
-
+  content;
+  codeMirrorOptions: any = {
+    theme: 'ambiance',
+    mode: 'application/yaml',
+    lineNumbers: true,
+    lineWrapping: true,
+    foldGutter: true,
+    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    lint: true
+  };
   constructor(
     private formBuilder: FormBuilder,
     private questionService: QuestionService
@@ -36,7 +48,24 @@ export class LandingComponentComponent implements OnInit {
     });
   }
 
+  setEditorContent(event) {
+    // console.log(event, typeof event);
+    console.log(this.content);
+  }
+
   ngOnInit() {
+    this.content = JSON.stringify({
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "Object",
+      "additionalProperties": false,
+      "properties": {
+        "string": {
+          "type": "string",
+          "title": "String"
+        }
+      }
+    }, null, ' ');
     this.questionService.getAllQuestions().subscribe((result: any) => {
       console.log(result)
       // if (result.success === true) {
@@ -45,6 +74,8 @@ export class LandingComponentComponent implements OnInit {
       this.currentQuestion = result[this.index];
       this.stage = Yaml.safeDump(this.currentQuestion.files.stage)
       this.answer = this.currentQuestion.files.answers
+      this.solution = Yaml.safeDump(this.answer)
+      console.log(this.solution)
       this.checkoutForm.controls['yaml'].setValue(this.stage)
       // }
     }, (err: any) => {
@@ -66,8 +97,10 @@ export class LandingComponentComponent implements OnInit {
     this.index = this.index - 1;
     this.currentQuestion = this.questions[this.index]
     console.log(this.currentQuestion)
+    console.log(this.index)
     this.stage = Yaml.safeDump(this.currentQuestion.files.stage)
     this.answer = this.currentQuestion.files.answers
+    this.solution = Yaml.safeDump(this.answer)
     if (JSON.stringify(this.currentQuestion.files.stage) === JSON.stringify(this.answer)) {
       this.isRightAnswer = true;
     } else {
@@ -85,13 +118,24 @@ export class LandingComponentComponent implements OnInit {
       this.isLastQuestion = false
     }
   }
+
+  toggleSolution(bool) {
+    console.log(bool)
+    if (bool) {
+      this.showSolution = true
+    } else {
+      this.showSolution = false
+    }
+  }
+
   next() {
     this.index = this.index + 1;
     this.currentQuestion = this.questions[this.index]
     this.stage = Yaml.safeDump(this.currentQuestion.files.stage)
     this.answer = this.currentQuestion.files.answers
+    this.solution = Yaml.safeDump(this.answer)
     this.checkoutForm.controls['yaml'].setValue(this.stage)
-
+    console.log(this.index)
     this.isRightAnswer = false;
     if (this.index === 0) {
       this.isFirstQuestion = true
@@ -105,12 +149,24 @@ export class LandingComponentComponent implements OnInit {
     }
   }
 
+  resetAnswer() {
+    console.log('reset answer')
+    console.log(this.currentQuestion.files.stagedAnswer)
+    if (this.currentQuestion.files.stagedAnswer) {
+      this.stage = this.currentQuestion.files.stagedAnswer
+    }
+    this.checkoutForm.controls['yaml'].setValue(this.stage)
+  }
+
   onSubmit(customerData) {
     // Process checkout data here
     try {
       this.items = JSON.stringify(Yaml.safeLoad(customerData.yaml))
+      this.questions[this.index].files.stagedAnswer = this.stage
       this.questions[this.index].files.stage = JSON.parse(this.items)
       let ans = JSON.stringify(this.answer)
+      console.log(this.items)
+      console.log(ans)
       if (this.items === ans) {
         this.isRightAnswer = true;
       } else {

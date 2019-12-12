@@ -1,7 +1,50 @@
 form {
     float: left;
+    width: 50%;
 }
-
+.blue {
+    background-color: salmon;
+}
 .green {
     background-color: lightgreen;
+}
+.finished_div{
+    display: inline-block;
+    margin: auto 300px;
+    width: 100%;
+    text-align: center;
+}
+.row{
+    width: 80%;
+    margin: 300px 300px 0px 300px;
+}
+
+.btn-primary{
+    margin-left: 20px;
+}
+
+.showhide-button{
+    display: inline-block;
+    float: left;
+    margin-left: 280px;
+}
+
+.show-button{
+    display: inline-block;
+    float: left;
+}
+
+.reset-button{
+    display: inline-block;
+    float: right;
+}
+.button-section{
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0px;
+    
+}
+
+.button-reset{
+    margin-right: 575px;
 }

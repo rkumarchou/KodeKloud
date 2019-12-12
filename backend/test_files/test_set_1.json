@@ -1,43 +1,62 @@
 [
     {
         "title": "Dictionary",
-        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
-        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "question": "Given dictionary with property <code>Property1</code> and value <code>value1</code>, ",
+        "subText": "add Another <code>Property2</code> and value <code>value2</code>",
         "files": {
             "name": "first.yaml",
-            "stage": {"Property1":"value1"},
-            "answers": {"Property1":"value1", "Property2":"value2"}
+            "stage": {
+                "Property1": "value1"
+            },
+            "answers": {
+                "Property1": "value1",
+                "Property2": "value2"
+            }
         }
     },
     {
-        "title": "Dictionary",
-        "question": "Add Property <code>Fruit1</code> and value <value>Apple</value>",
-        "subText": "Add Another <code>Fruit2</code> and value <value>Mango</value>",
+        "title": "Dictionary Fruit",
+        "question": "Given dictionary with property <code>Fruit1</code> and value <code>Apple</code>, ",
+        "subText": "add Another <code>Fruit2</code> and value <code>Mango</code>",
         "files": {
             "name": "first.yaml",
-            "stage": {"Fruit1":"Apple"},
-            "answers": {"Fruit1":"Apple", "Fruit2":"Mango"}
+            "stage": {
+                "Fruit1": "Apple"
+            },
+            "answers": {
+                "Fruit1": "Apple",
+                "Fruit2": "Mango"
+            }
         }
     },
     {
-        "title": "Dictionary in Dictionary",
-        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
-        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "title": "Dictionary Color",
+        "question": "Given dictionary with property <code>ball</code> and value <code>tennis</code>, ",
+        "subText": "add a property <code>color</code> and value <code>red</code>",
         "files": {
             "name": "first.yaml",
-            "stage": {"Property1":"value1"},
-            "answers": {"Property1":"value1", "Property2":"value2"}
+            "stage": {
+                "ball": "tennis"
+            },
+            "answers": {
+                "ball": "tennis",
+                "color": "red"
+            }
         }
     },
     {
-        "title": "Dictionary in Dictionary",
-        "question": "Add Property <code>Property1</code> and value <value>value1</value>",
-        "subText": "Add Another <code>Property2</code> and value <value>value2</value>",
+        "title": "Dictionary Person",
+        "question": "Given dictionary with property <code>Person</code> and value <code>Sam</code>, ",
+        "subText": "add Another <code>lastname</code> and value <code>smith</code>",
         "files": {
             "name": "first.yaml",
-            "stage": {"Property1":"value1"},
-            "answers": {"Property1":"value1", "Property2":"value2"}
+            "stage": {
+                "Person": "Sam"
+            },
+            "answers": {
+                "Person": "Sam",
+                "lastname": "smith"
+            }
         }
     }
-
 ]

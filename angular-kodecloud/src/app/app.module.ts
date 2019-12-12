@@ -7,6 +7,7 @@ import { LandingComponentComponent } from './landing-component/landing-component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionService } from './question.service';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { QuestionService } from './question.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CodemirrorModule,
     HttpClientModule
   ],
   providers: [QuestionService],
