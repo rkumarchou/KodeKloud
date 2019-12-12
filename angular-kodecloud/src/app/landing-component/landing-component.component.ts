@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 const Yaml = require('js-yaml');
 import { FormBuilder } from '@angular/forms';
-import { QuestionService } from 'app/question.service';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-landing-component',
@@ -20,7 +20,10 @@ export class LandingComponentComponent implements OnInit {
   currentQuestion = null;
   index = 0;
   stage = null;
+  correctAnswerCount = 0;
+  totalQuestions = 0;
   answer = null;
+  finished = false;
 
 
   constructor(
@@ -49,12 +52,27 @@ export class LandingComponentComponent implements OnInit {
     }, () => console.log());
   }
 
+  finish() {
+    this.totalQuestions = this.questions.length
+    for (let question of this.questions) {
+      if (JSON.stringify(question.files.stage) === JSON.stringify(question.files.answers)) {
+        this.correctAnswerCount = this.correctAnswerCount + 1;
+      }
+    }
+    this.finished = true
+  }
+
   previous() {
     this.index = this.index - 1;
     this.currentQuestion = this.questions[this.index]
+    console.log(this.currentQuestion)
     this.stage = Yaml.safeDump(this.currentQuestion.files.stage)
     this.answer = this.currentQuestion.files.answers
-    this.isRightAnswer = false;
+    if (JSON.stringify(this.currentQuestion.files.stage) === JSON.stringify(this.answer)) {
+      this.isRightAnswer = true;
+    } else {
+      this.isRightAnswer = false;
+    }
     this.checkoutForm.controls['yaml'].setValue(this.stage)
     if (this.index === 0) {
       this.isFirstQuestion = true
@@ -91,7 +109,7 @@ export class LandingComponentComponent implements OnInit {
     // Process checkout data here
     try {
       this.items = JSON.stringify(Yaml.safeLoad(customerData.yaml))
-      this.questions[this.index].files.stage = this.items
+      this.questions[this.index].files.stage = JSON.parse(this.items)
       let ans = JSON.stringify(this.answer)
       if (this.items === ans) {
         this.isRightAnswer = true;

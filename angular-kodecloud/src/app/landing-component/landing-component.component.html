@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;" [ngClass]="{'green': isRightAnswer}">
+<div class="card" style="width: 18rem;" [ngClass]="{'green': isRightAnswer}" *ngIf="!finished">
   <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
   <div class="card-body">
     <h5 class="card-title" *ngIf="currentQuestion">{{currentQuestion.title}}</h5>
@@ -8,14 +8,20 @@
     <i class="pi pi-times" *ngIf="currentQuestion" [innerHTML]="currentQuestion.subText"></i>
     <button (click)="previous()" class="btn btn-primary" *ngIf="!isRightAnswer"
       [disabled]="isFirstQuestion">Prev</button>
-    <button (click)="next()" class="btn btn-primary" [disabled]="isLastQuestion">Next</button>
+    <button (click)="next()" class="btn btn-primary" *ngIf="!isLastQuestion" [disabled]="isLastQuestion">Next</button>
+    <button (click)="finish()" class="btn btn-primary" *ngIf="isLastQuestion">Finish</button>
   </div>
 </div>
-<div>
+<div *ngIf="!finished">
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
     <div>
       <textarea id="yaml" (keyup)="onSubmit(checkoutForm.value)" type=" textarea" formControlName="yaml"
         *ngIf="currentQuestion" value="{{stage}}"></textarea>
     </div>
   </form>
+</div>
+<div *ngIf="finished">
+  <h1> Quiz Finished</h1>
+  <h2>Number of Right Answers {{correctAnswerCount}}</h2>
+  <h2>Out of {{totalQuestions}} questions</h2>
 </div>
