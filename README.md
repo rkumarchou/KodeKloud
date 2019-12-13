@@ -32,11 +32,14 @@ $ pip install -r requirements.txt
 $ python run.py
 ```
 
+after following the above steps you can see the flask server up and running on localhost:5000
+
 ## Steps to run angular app
-change directory to 'angular-kodecloud'
+change directory to 'frontend'
 
 npm install
 
 ng serve
 
 after following the above steps you can see the application up and running on localhost:4200
+(this angular app is using the localhost:5000 flask server as backend you can change it to use any other backend server using the environments/environment.ts file)

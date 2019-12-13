@@ -14,7 +14,7 @@ questions_api = Blueprint('questions_api', __name__)
 def get_questions():
     text = []
     try:
-        with open('test_files/test_set_1.json', encoding='utf-8-sig') as json_file:
+        with open('test_files/questions.json', encoding='utf-8-sig') as json_file:
             text = json_file.read()
         return jsonify(json.loads(text))
     except:

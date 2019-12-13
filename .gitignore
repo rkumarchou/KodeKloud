@@ -32,7 +32,7 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-
+backend/environment_name/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -170,4 +170,4 @@ Thumbs.db
 # Pyre type checker
 .pyre/
 
-/angular-kodecloud/node_modules
+/frontend/node_modules

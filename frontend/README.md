@@ -1,10 +1,19 @@
-# AngularKodecloud
+# AngularKodeKloud
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Steps to run angular app
+change directory to 'frontend'
+
+npm install
+
+ng serve
+
+after following the above steps you can see the application up and running on localhost:4200
+(this angular app is using the above localhost:5000 flask server as backend you can change it to any other backend server using the environments/environment.ts file)
+
 
 ## Code scaffolding
 
