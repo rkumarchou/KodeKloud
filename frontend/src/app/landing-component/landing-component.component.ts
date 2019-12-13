@@ -169,6 +169,7 @@ export class LandingComponentComponent implements OnInit {
       console.log(ans)
       if (this.items === ans) {
         this.isRightAnswer = true;
+        this.showSolution = false;
       } else {
         this.isRightAnswer = false;
       }
