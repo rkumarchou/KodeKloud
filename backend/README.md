@@ -13,7 +13,7 @@ $ python3 -m venv environment_name
 
 3) Activate virtual environment:
 ```sh
-$ . venv environment_name/bin/activate
+$ . environment_name/bin/activate
 ```
 
 4) Install required dependencies
